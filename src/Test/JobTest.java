@@ -33,5 +33,10 @@ public class JobTest {
         Job testJob2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality Control"), new CoreCompetency("Persistence"));
         assertNotEquals(testJob1, testJob2);
     }
+    @Test
+    public void ToStringTest(){
+        Job testJob1 = new Job("", new Employer(), new Location(), new PositionType(), new CoreCompetency());
+        System.out.println(testJob1);
+    }
 
 }

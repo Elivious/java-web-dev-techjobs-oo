@@ -1,5 +1,7 @@
 package org.launchcode.techjobs_oo;
 
+import java.awt.*;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Job {
@@ -20,6 +22,7 @@ public class Job {
         id = nextId;
         nextId++;
     }
+
 
     public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency){
         this.id = new Job().getId();
@@ -69,6 +72,10 @@ public class Job {
 
     public void setEmployer(Employer employer) {
         this.employer = employer;
+
+        if (employer.getValue() == null){
+           employer.setValue("Data not found");
+        }
     }
 
     public Location getLocation() {
@@ -93,5 +100,32 @@ public class Job {
 
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
+    }
+
+    @Override
+    public String toString() {
+                int counter = 0;
+                ArrayList<String> checker = new ArrayList<>();
+                checker.add(name);
+                checker.add(employer.getValue());
+                checker.add(location.getValue());
+                checker.add(positionType.getValue());
+                checker.add(coreCompetency.getValue());
+                for(String i : checker){
+                    if (i.equals("Data not found") || i.equals("")){
+                        counter++;
+                    }
+                }
+                if (counter == 5){
+                    return "OOPS";
+                }else {
+                    return "ID: " + id + '\n' +
+                            "Name: " + name + '\n' +
+                            "Employer: " + employer.getValue() + '\n' +
+                            "Location: " + location.getValue() + '\n' +
+                            "Position Type: " + positionType.getValue() + '\n' +
+                            "Core Competency: " + coreCompetency.getValue();
+                }
+
     }
 }

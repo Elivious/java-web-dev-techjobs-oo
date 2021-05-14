@@ -49,7 +49,7 @@ public class PositionType {
     }
 
     public String getValue() {
-        return value;
+        return Objects.requireNonNullElse(value, "Data not found");
     }
 
     public void setValue(String value) {
